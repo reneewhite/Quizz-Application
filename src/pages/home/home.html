@@ -1,184 +1,199 @@
 <ion-header>
-  <ion-navbar >
-    <ion-title>
+  <ion-navbar color="danger">
+    <ion-title style="text-align: center">
       Quizz App
     </ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-  <h1>Category A: Brain teasers</h1>
-  <br>
-  <div id="doll" style="text-align: center">
-   <h3>{{end}}</h3>
-  </div> 
-  <img id="so" width="15%" height="15%" src="../../assets/imgs/timers.jpg"> 
-  <button ion-button id="up" block (click)="onTimer()"><p> 00:{{timerVal}}</p></button> 
-  <!-- <div id="lo" style="text-align: center"> -->
-    <!-- <p>Score: {{score}}</p> -->
-  <!-- </div> -->
-  <div id="dont" *ngIf="score >= 1">
-      <p>{{correct}}</p>
-  </div>
-  <div id="do" *ngIf="score < 1">
-      <p>{{wrong}}</p>
-  </div>
-<h5>When you add two letters, the five letter word becomes shorter. What is it?</h5>
-<ion-item>
-<ion-label>Short</ion-label>
-<ion-checkbox [(ngModel)]="ans1" checked="false"></ion-checkbox>
-</ion-item>
-<ion-item>
-<ion-label>Shortest</ion-label>
-<ion-checkbox [(ngModel)]="ans2" checked="false"></ion-checkbox>
-</ion-item> 
-<ion-item>
-<ion-label>Manual</ion-label>
-<ion-checkbox [(ngModel)]="ans3" checked="false"></ion-checkbox>
-</ion-item> 
-<!-- <div id="lo" style="text-align: center"> -->
-  <!-- <p>Score: {{score1}}</p> -->
-<!-- </div> -->
-<div id="dont" *ngIf="score1 >= 1">
-  <p>{{correct}}</p>
-</div>
-<div id="do" *ngIf="score1 < 1">
-  <p>{{wrong}}</p>
-</div>
-<h5>What is the end of a rainbow ?</h5>
-<ion-item>
-<ion-label>Blue</ion-label>
-<ion-checkbox [(ngModel)]="ans4" checked="false"></ion-checkbox>
-</ion-item>
-<ion-item>
-<ion-label>Letter W</ion-label>
-<ion-checkbox [(ngModel)]="ans5" checked="false"></ion-checkbox>
-</ion-item> 
-<ion-item>
-<ion-label>Letter O</ion-label>
-<ion-checkbox [(ngModel)]="ans6" checked="false"></ion-checkbox>
-</ion-item> 
-<!-- <div id="lo" style="text-align: center"> -->
-  <!-- <p>Score: {{score3}}</p> -->
-<!-- </div> -->
-<div id="dont" *ngIf="score3 >= 1">
-  <p>{{correct}}</p>
-</div>
-<div id="do" *ngIf="score3 < 1">
-  <p>{{wrong}}</p>
-</div>
-<h5>Which word in the dictionary is spelled incorrectly ?</h5>
-<ion-item>
-<ion-label>Throughout</ion-label>
-<ion-checkbox [(ngModel)]="ans7" checked="false"></ion-checkbox>
-</ion-item>
-<ion-item>
-<ion-label>Incorrectly</ion-label>
-<ion-checkbox [(ngModel)]="ans8" checked="false"></ion-checkbox>
-</ion-item> 
-<ion-item>
-<ion-label>Delicious</ion-label>
-<ion-checkbox [(ngModel)]="ans9" checked="false"></ion-checkbox>
-</ion-item> 
-<!-- <div id="lo" style="text-align: center"> -->
-  <!-- <p>Score: {{score4}}</p> -->
-<!-- </div> -->
-<div id="dont" *ngIf="score4 >= 1">
-  <p>{{correct}}</p>
-</div>
-<div id="do" *ngIf="score4 < 1">
-  <p>{{wrong}}</p>
-</div>
-<h5>What is full of holes but can still hold water?</h5>
-<ion-item>
-<ion-label>Tissue</ion-label>
-<ion-checkbox [(ngModel)]="ans10" checked="false"></ion-checkbox>
-</ion-item>
-<ion-item>
-<ion-label>Blanket</ion-label>
-<ion-checkbox [(ngModel)]="ans11" checked="false"></ion-checkbox>
-</ion-item> 
-<ion-item>
-<ion-label>Sponge</ion-label>
-<ion-checkbox [(ngModel)]="ans12" checked="false"></ion-checkbox>
-</ion-item> 
-<!-- <div id="lo" style="text-align: center"> -->
-  <!-- <p>Score: {{score5}}</p> -->
-<!-- </div> -->
-<div id="dont" *ngIf="score5 >= 1">
-  <p>{{correct}}</p>
-</div>
-<div id="do" *ngIf="score5 < 1">
-  <p>{{wrong}}</p>
-</div>
-<h5>What goes up and down, but still remains in the same place?</h5>
-<ion-item>
-<ion-label>Stairs</ion-label>
-<ion-checkbox [(ngModel)]="ans13" checked="false"></ion-checkbox>
-</ion-item>
-<ion-item>
-<ion-label>Mountain</ion-label>
-<ion-checkbox [(ngModel)]="ans14" checked="false"></ion-checkbox>
-</ion-item> 
-<ion-item>
-<ion-label>Road</ion-label>
-<ion-checkbox [(ngModel)]="ans15" checked="false"></ion-checkbox>
-</ion-item> 
-<br>
-<h2> Total score: {{totalScore}}</h2>
 
-<button ion-button id="dawn" block (click)="onClick()">Submit</button>
-<br>
-<br>
-<button ion-button id="john" block></button>
-<h1>Category B: Mathematics(Algebra)</h1>
-<br>
-<div id="doll" style="text-align: center">
-  <h2>{{end2}}</h2>
+  <!-- page 0 -->
+  <div *ngIf="page0">
+      <h1>REBA_QUIZZ <br>APP</h1>
+    <button id="page" ion-button block (click)="onPageNext0()">Start</button> 
+  </div>
+<!-- Page 1 -->
+<div *ngIf="page1">
+    <h1>Category A: Brain teasers</h1>
+    <br>
+    <div id="doll" style="text-align: center">
+     <h3>{{end}}</h3>
+    </div> 
+    <!-- <img id="so" width="15%" height="15%" src="../../assets/imgs/timers.jpg">  -->
+    <button ion-button id="up" block (click)="onTimer()"><p> 00:{{timerVal}}</p></button> 
+    <!-- <div id="lo" style="text-align: center"> -->
+      <!-- <p>Score: {{score}}</p> -->
+    <!-- </div> -->
+    <br>
+    <div id="dont" *ngIf="score >= 1">
+        <p>{{correct}}</p>
+    </div>
+    <div id="do" *ngIf="score < 1">
+        <p>{{wrong}}</p>
+    </div>
+    <h5>When you add two letters, the five letter word becomes shorter. What is it?</h5>
+    <ion-item>
+    <ion-label>Short</ion-label>
+    <ion-checkbox [(ngModel)]="ans1" checked="false"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+    <ion-label>Shortest</ion-label>
+    <ion-checkbox [(ngModel)]="ans2" checked="false"></ion-checkbox>
+    </ion-item> 
+    <ion-item>
+    <ion-label>Manual</ion-label>
+    <ion-checkbox [(ngModel)]="ans3" checked="false"></ion-checkbox>
+    </ion-item> 
+    <!-- <div id="lo" style="text-align: center"> -->
+    <!-- <p>Score: {{score1}}</p> -->
+    <!-- </div> -->
+    <div id="dont" *ngIf="score1 >= 1">
+    <p>{{correct}}</p>
+    </div>
+    <div id="do" *ngIf="score1 < 1">
+    <p>{{wrong}}</p>
+    </div>
+    <h5>What is the end of a rainbow ?</h5>
+    <ion-item>
+    <ion-label>Blue</ion-label>
+    <ion-checkbox [(ngModel)]="ans4" checked="false"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+    <ion-label>Letter W</ion-label>
+    <ion-checkbox [(ngModel)]="ans5" checked="false"></ion-checkbox>
+    </ion-item> 
+    <ion-item>
+    <ion-label>Letter O</ion-label>
+    <ion-checkbox [(ngModel)]="ans6" checked="false"></ion-checkbox>
+    </ion-item> 
+    <!-- <div id="lo" style="text-align: center"> -->
+    <!-- <p>Score: {{score3}}</p> -->
+    <!-- </div> -->
+    <div id="dont" *ngIf="score3 >= 1">
+    <p>{{correct}}</p>
+    </div>
+    <div id="do" *ngIf="score3 < 1">
+    <p>{{wrong}}</p>
+    </div>
+    <h5>Which word in the dictionary is spelled incorrectly ?</h5>
+    <ion-item>
+    <ion-label>Throughout</ion-label>
+    <ion-checkbox [(ngModel)]="ans7" checked="false"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+    <ion-label>Incorrectly</ion-label>
+    <ion-checkbox [(ngModel)]="ans8" checked="false"></ion-checkbox>
+    </ion-item> 
+    <ion-item>
+    <ion-label>Delicious</ion-label>
+    <ion-checkbox [(ngModel)]="ans9" checked="false"></ion-checkbox>
+    </ion-item> 
+    <!-- <div id="lo" style="text-align: center"> -->
+    <!-- <p>Score: {{score4}}</p> -->
+    <!-- </div> -->
+    <div id="dont" *ngIf="score4 >= 1">
+    <p>{{correct}}</p>
+    </div>
+    <div id="do" *ngIf="score4 < 1">
+    <p>{{wrong}}</p>
+    </div>
+    <h5>What is full of holes but can still hold water?</h5>
+    <ion-item>
+    <ion-label>Tissue</ion-label>
+    <ion-checkbox [(ngModel)]="ans10" checked="false"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+    <ion-label>Blanket</ion-label>
+    <ion-checkbox [(ngModel)]="ans11" checked="false"></ion-checkbox>
+    </ion-item> 
+    <ion-item>
+    <ion-label>Sponge</ion-label>
+    <ion-checkbox [(ngModel)]="ans12" checked="false"></ion-checkbox>
+    </ion-item> 
+    <!-- <div id="lo" style="text-align: center"> -->
+    <!-- <p>Score: {{score5}}</p> -->
+    <!-- </div> -->
+    <div id="dont" *ngIf="score5 >= 1">
+    <p>{{correct}}</p>
+    </div>
+    <div id="do" *ngIf="score5 < 1">
+    <p>{{wrong}}</p>
+    </div>
+    <h5>What goes up and down, but still remains in the same place?</h5>
+    <ion-item>
+    <ion-label>Stairs</ion-label>
+    <ion-checkbox [(ngModel)]="ans13" checked="false"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+    <ion-label>Mountain</ion-label>
+    <ion-checkbox [(ngModel)]="ans14" checked="false"></ion-checkbox>
+    </ion-item> 
+    <ion-item>
+    <ion-label>Road</ion-label>
+    <ion-checkbox [(ngModel)]="ans15" checked="false"></ion-checkbox>
+    </ion-item> 
+    <br>
+    <h2> Total score: {{totalScore}}</h2>
+    
+    <button ion-button id="doubt" block (click)="onClick()">Score</button>
+    <button ion-button id="fall"  block (click)="onPageNext()">Next</button> 
 </div>
-<img id="so" width="15%" height="15%" src="../../assets/imgs/timers.jpg">
-<button ion-button id="down" block (click)="onMaths()"><p>00:{{timerValue}}</p></button>
-<br>
-<ion-item>
-  <ion-label>The slope of a vertical line is undefined.</ion-label>
-  <ion-select [(ngModel)]="slope">
-    <ion-option value="t1">True</ion-option>
-    <ion-option value="f1">False</ion-option>
-  </ion-select>
-</ion-item>
-<ion-item>
-    <ion-label>30% of x is equal to 0.03x</ion-label>
-    <ion-select [(ngModel)]="percent">
-      <ion-option value="t2">True</ion-option>
-      <ion-option value="f2">False</ion-option>
-    </ion-select>
-</ion-item>
-<ion-item>
-    <ion-label>"x is at most equal to 9" is written mathematically as x < 9.</ion-label>
-    <ion-select [(ngModel)]="equal">
-      <ion-option value="t3">True</ion-option>
-      <ion-option value="f3">False</ion-option>
-    </ion-select>
-</ion-item>
-<ion-item>
-    <ion-label>1 / (( -2 ) -4) = 16.</ion-label>
-    <ion-select [(ngModel)]="number">
-      <ion-option value="t4">True</ion-option>
-      <ion-option value="f4">False</ion-option>
-    </ion-select>
-</ion-item>
 
-<ion-item>
-      <ion-label>The absolute value of a real negative number is negative.</ion-label>
-      <ion-select [(ngModel)]="negative">
-        <ion-option value="t5">True</ion-option>
-        <ion-option value="f5">False</ion-option>
+<!-- page2 -->
+<div *ngIf="page2">
+    <h1>Category B: Mathematics-Algebra</h1>
+    <br>
+    <div id="doll" style="text-align: center">
+    <h2>{{end2}}</h2>
+    </div>
+    <!-- <img id="so" width="15%" height="15%" src="../../assets/imgs/timers.jpg"> -->
+    <button ion-button id="down" block (click)="onMaths()"><p>00:{{timerValue}}</p></button>
+    <br><br><br>
+    <ion-item>
+    <ion-label>The slope of a vertical line is undefined.</ion-label>
+    <ion-select [(ngModel)]="slope" (ionChange)="onWork()">
+      <ion-option value="t1">True</ion-option>
+      <ion-option value="f1">False</ion-option>
+    </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>30% of x is equal to 0.03x</ion-label>
+      <ion-select [(ngModel)]="percent" (ionChange)="onWork()">
+        <ion-option value="t2">True</ion-option>
+        <ion-option value="f2">False</ion-option>
       </ion-select>
-  </ion-item>
-<h2>Total score:{{mathsTotal}}</h2>
-<button ion-button id="doubt" block (click)="onWork()">Submit</button> 
-<br><br>
-<button ion-button id="john" block></button>
-<h1>Category C: Geographic questions. Answers based on picture.</h1>
+    </ion-item>
+    <ion-item>
+      <ion-label>"x is at most equal to 9" is written mathematically as x < 9.</ion-label>
+      <ion-select [(ngModel)]="equal" (ionChange)="onWork()">
+        <ion-option value="t3">True</ion-option>
+        <ion-option value="f3">False</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>1 / (( -2 ) -4) = 16.</ion-label>
+      <ion-select [(ngModel)]="number" (ionChange)="onWork()">
+        <ion-option value="t4">True</ion-option>
+        <ion-option value="f4">False</ion-option>
+      </ion-select>
+    </ion-item>
+    
+    <ion-item>
+        <ion-label>The absolute value of a real negative number is negative.</ion-label>
+        <ion-select [(ngModel)]="negative" (ionChange)="onWork()">
+          <ion-option value="t5">True</ion-option>
+          <ion-option value="f5">False</ion-option>
+        </ion-select>
+    </ion-item>
+    <h2>Total score: {{mathsTotal}}</h2>
+    <button ion-button id="doubt" block (click)="onResult()">Score</button> 
+  <button ion-button id="fall" block (click)="onPageNext1()">Next</button>
+</div>
+
+
+<!-- page 3 -->
+<div *ngIf="page3">
+<h1>Category C: Geographic questions.</h1>
 <h5>True or False: Iceland is covered on ice.</h5>
 <img width="100%" height="50%" src="../../assets/imgs/iceland.jpg">
 <div id="lal">
@@ -187,61 +202,108 @@
 <div id="lo">
 <button id="lot" ion-button block (click)="onFalse()">False</button> 
 </div>
-<br><br>
+<br><br><br><br>
 <h5>Which ocean lies on the east coast of the United States?</h5>
 <img width="100%" height="50%" src="../../assets/imgs/ocean.jpg">
 <div id="o">
-  <button id ="p" ion-button block (click)="onPacific()">Pacific</button> 
+<button id ="p" ion-button block (click)="onPacific()">Pacific</button> 
+</div>
+<div id="b">
+<button id="q" ion-button block (click)="onIndian()">Indian</button> 
+</div>
+<div id="c">
+  <button id="r" ion-button block (click)="onAtlantic()">Atlantic</button> 
   </div>
-  <div id="b">
-  <button id="q" ion-button block (click)="onIndian()">Indian</button> 
+  <div id="d">
+  <button id="s" ion-button block (click)="onEastern()">Eastern</button> 
   </div>
-  <div id="c">
-    <button id="r" ion-button block (click)="onAtlantic()">Atlantic</button> 
-    </div>
-    <div id="d">
-    <button id="s" ion-button block (click)="onEastern()">Eastern</button> 
-    </div>
-    <br>
-    <h5>Which is the world's highest mountain?</h5>
+  <br><br><br><br>
+  <h5>Which is the world's highest mountain?</h5>
 <img width="100%" height="50%" src="../../assets/imgs/mountain.jpg">
 <ion-item>
-    <ion-label>Which is the world's highest mountain?</ion-label>
-  <ion-select [(ngModel)]="mount">
-    <ion-option value="k2">K2</ion-option>
-    <ion-option value="everest">Mount Everest</ion-option>
-    <ion-option value="kila">Kilimanjaro</ion-option>
-    <ion-option value="makalu">Makalu</ion-option>
-  </ion-select>
+  <ion-label>Which is the world's highest mountain?</ion-label>
+<ion-select [(ngModel)]="mount">
+  <ion-option value="k2">K2</ion-option>
+  <ion-option value="everest">Mount Everest</ion-option>
+  <ion-option value="kila">Kilimanjaro</ion-option>
+  <ion-option value="makalu">Makalu</ion-option>
+</ion-select>
 </ion-item>
 <h5>How many great lakes are there?</h5>
 <img width="100%" height="50%" src="../../assets/imgs/lake.jpg">
 <div id="sof">
-  <button ion-button block (click)="onSix()">6</button> 
+<button id="child" ion-button block (click)="onSix()">6</button> 
 </div>
 <div id="soft">
-  <button ion-button block (click)="onFour()">4</button> 
+<button id="childs" ion-button block (click)="onFour()">4</button> 
 </div>
 <div id="softer">
-    <button ion-button block (click)="onFive()">5</button> 
+  <button id="childi" ion-button block (click)="onFive()">5</button> 
 </div>
-<br><br>
+<br><br><br><br>
 <h5>The most northerly circle of latitude on the Earth at which the Sun may appear directly overhead at its culmination is called?</h5>
 <img width="100%" height="50%" src="../../assets/imgs/earth.jpg">
 <ion-item>
 <ion-select [(ngModel)]="earth">
-  <ion-option value="Tropic of capricon">Tropic of capricon</ion-option>
-  <ion-option value="Tropic of cancer">Tropic of cancer</ion-option>
+<ion-option value="Tropic of capricon">Tropic of capricon</ion-option>
+<ion-option value="Tropic of cancer">Tropic of cancer</ion-option>
 </ion-select>
 </ion-item>
 <ion-input type="text" [(ngModel)]="earth" placeholder="Enter your answer here"></ion-input>
 <div id="do" *ngIf="cance == 0">
-  <p> {{wrong}}</p>
+<p> {{wrong}}</p>
 </div>
 <div id="dont" *ngIf="cance >= 1">
-    <p> {{correct}}</p>
+  <p> {{correct}}</p>
 </div>
-<br><br>
+<br>
 <h2>Total score: {{geoTotal}}</h2>
-<button ion-button block (click)="onSubmit()">Submit</button> 
+<button ion-button id="doubt" block (click)="onSubmit()">Score</button> 
+<button ion-button id = "fall" block (click)="onPageNext2()">Next</button>
+</div>
+
+<div *ngIf="page4">
+<h1>Overall Score: </h1> 
+<h2> {{overScore}}</h2>
+<button ion-button id="doubt" block (click)="onOver()">Score</button> 
+<br>
+<br>
+<h1>Results: </h1>
+<h2>{{pass}}</h2>
+<h2>{{fail}}</h2>
+<br>
+<button ion-button id="doubt" block (click)="onReport()">Report</button> 
+<br>
+<br>
+<h1>Answers: </h1>
+<br>
+<div  style="text-align: center" *ngIf="summary">
+  <b><h3>Category A: Brain Teasers</h3></b>
+  <h5>Short</h5>
+  <h5>Letter W</h5>
+  <h5>Incorrectly</h5>
+  <h5>Sponge</h5>
+  <h5>Stairs</h5>
+</div>
+<br>
+<div  style="text-align: center" *ngIf="summary">
+    <h3>Category B: Mathematics</h3>
+    <h5>True</h5>
+    <h5>False</h5>
+    <h5>False</h5>
+    <h5>False</h5>
+    <h5>False</h5>
+</div>
+<br>
+<div  style="text-align: center" *ngIf="summary">
+    <h3>Category C: Geography</h3>
+    <h5>False</h5>
+    <h5>Atlantic</h5>
+    <h5>Kilimanjaro</h5>
+    <h5>4</h5>
+    <h5>Tropic of Cancer</h5>
+  </div>
+<br>
+<button ion-button id="doubt" block (click)="onMemo()">Answers</button> 
+</div>
 </ion-content>

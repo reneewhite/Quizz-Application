@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/interval';
 
@@ -8,6 +8,15 @@ import 'rxjs/add/observable/interval';
   templateUrl: 'home.html'
 })
 export class HomePage {
+page0 = true;
+page1 = false;
+page2 = false;
+page3 = false;
+page4 = false;
+page5 = false;
+
+
+
 ans1
 ans2
 ans3
@@ -56,7 +65,7 @@ mathsScore5 = 0;
 mathsTotal = 0;
 
 //category c
-geoTotal = null;
+geoTotal = 0;
 geoTrue =null;
 geoFalse =null;
 pacific =  null;
@@ -76,6 +85,15 @@ cance = null;
 cap = null;
 sepScore = null;
 
+
+//overall score
+overScore = 0;
+howManyWrongs = 0;
+pass;
+fail;
+passMark = 7.5;
+failMark = 7;
+
 end 
 end2
 timerVar;
@@ -83,16 +101,67 @@ timerValue;
 timerVariable;
 timerVal;
 wrong = " "
-  constructor(public navCtrl: NavController) {
+
+summary: boolean;
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
     this. onTimer()
     this.onMaths()
+    this.summary = false;
   }
+
+  onPageNext0(){
+    this.page0 = false;
+    this.page1 = true;
+    this.page2 = false;
+    this.page3 = false;
+    this.page4 = false;
+    this.page5 = false;
+    
+  }
+
+onPageNext() {
+  this.page0 = false;
+  this.page1 = false;
+  this.page2 = true;
+  this.page3 = false;
+  this.page4 = false;
+  this.page5 = false;
+}
+
+onPageNext1(){
+  this.page0 = false;
+  this.page1 = false;
+  this.page2 = false;
+  this.page3 = true;
+  this.page4 = false;
+  this.page5 = false;
+}
+onPageNext2(){
+  this.page0 = false;
+  this.page1 = false;
+  this.page2 = false;
+  this.page3 = false;
+  this.page4 = true;
+  this.page5 = false;
+}
+onPageNext3(){
+  this.page0 = false;
+  this.page1 = false;
+  this.page2 = false;
+  this.page3 = false;
+  this.page4 = false;
+  this.page5 = true;
+}
+
+
+
+
 
   onTimer() {
 this.timerVar = Observable.interval(1000).subscribe( x => {
     console.log(x);
     this.timerVal = x;
-    if(x == 10)
+    if(x == 50)
     {
       this.timerVar.unsubscribe()
       this.end =  "Time up!!";
@@ -105,7 +174,7 @@ this.timerVar = Observable.interval(1000).subscribe( x => {
     this.timerVariable = Observable.interval(1000).subscribe( x => {
         console.log(x);
         this.timerValue = x;
-        if(x == 10)
+        if(x == 50)
         {
           this.timerVariable.unsubscribe()
           this.end2 =  "Time up!!";
@@ -224,52 +293,72 @@ this.timerVar = Observable.interval(1000).subscribe( x => {
 
 }
 
-onWork() {
+onWork(selectedValue: any) {
 
   if(this.slope === "t1")
   {
     this.mathsScore1 = 1;
+    this.timerVariable.unsubscribe()
     
   }else if(this.slope === "f1")
   {
     this.mathsScore1 = 0;
+    this.timerVariable.unsubscribe()
   }
 
   if(this.percent === "t2")
   {
     this.mathsScore2 = 0;
+    this.timerVariable.unsubscribe()
   }else if(this.percent === "f2")
   {
     this.mathsScore2 = 1;
+    this.timerVariable.unsubscribe()
   }
 
   if(this.equal === "t3")
   {
     this.mathsScore3 = 0;
+    this.timerVariable.unsubscribe()
   }else if(this.equal === "f3")
   {
     this.mathsScore3 = 1;
+    this.timerVariable.unsubscribe()
   }
 
   if(this.number === "t4")
   {
     this.mathsScore4 = 1;
+    this.timerVariable.unsubscribe()
   }else if(this.number === "f4")
   {
     this.mathsScore4 = 0;
+    this.timerVariable.unsubscribe()
   }
 
   if(this.negative === "t5")
   {
     this.mathsScore5 = 0;
+    this.timerVariable.unsubscribe()
   }else if(this.negative === "f5")
   {
     this.mathsScore5 = 1;
+    this.timerVariable.unsubscribe()
   }
-
   this.mathsTotal = this.mathsScore1 + this.mathsScore2 + this.mathsScore3 + this.mathsScore4 + this.mathsScore5;
-  alert("Well done your score is" + " " + "Score" + " "+ "=" + " " + this.mathsTotal);
 }
+onResult(){
+
+  this.timerVariable.unsubscribe()
+  
+  const alert = this.alertCtrl.create({
+    title: 'Your Maths Score:',
+    subTitle: this.mathsTotal + " " +  "out" + " " + '5',
+ buttons: ['OK'] 
+  });
+  alert.present();
+}
+
 
 onTrue() {
     this.geoTotal = this.geoTotal + this.geoTrue;
@@ -338,8 +427,44 @@ onSubmit(){
   }
   this.geoTotal = this.geoTotal + this.cance;
   this.geoTotal = this.kila + this.cance + this.four + this.geoFalse + this.atlantic;
+
 }
 
+
+onOver(){
+  this.overScore = this.totalScore + this.mathsTotal + this.geoTotal;
+  const alert = this.alertCtrl.create({
+    title: 'OVERALL SCORE:',
+    subTitle: this.overScore + "/" + "15",
+ buttons: ['OK'] 
+  });
+  alert.present();
+}
+
+onReport(){
+  this.howManyWrongs = 15 - this.overScore;
+  const alert = this.alertCtrl.create({
+    title: 'Report',
+    subTitle:"You have:" + "\n" + this.overScore + " " + "Correct Answers" + "\n" + "You have:" + "\n" + this.howManyWrongs  + " " + 
+    "Wrong answers"
+    + " " + "Hooray You Have Completed The Quizz!!",
+ buttons: ['OK'] 
+  });
+  alert.present();
+
+  if(this.overScore >= this.passMark)
+  {
+    this.pass = "Passed. Well Done!";
+  }else if(this.overScore < this.passMark)
+  {
+    this.fail = "Ooops Failed. Sorry!";
+  }
+}
+
+onMemo(){
+  this.summary = true;
+
+}
 
 
 }
